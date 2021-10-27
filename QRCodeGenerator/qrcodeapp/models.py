@@ -7,11 +7,11 @@ from django.core.files import File
 import random
 
 class QrCode(models.Model):
-   Qrtxt=models.CharField()
+   qrtxt=models.CharField(max_length=500,default='')
    image=models.ImageField(upload_to='qrcode',blank=True)
 
    def save(self,*args,**kwargs):
-      qrcode_img=qrcode.make(self.url)
+      qrcode_img=qrcode.make(self.qrtxt)
       canvas=Image.new("RGB", (300,300),"white")
       draw=ImageDraw.Draw(canvas)
       canvas.paste(qrcode_img)

@@ -4,7 +4,7 @@ from .models import QrCode
 def home(request):
    if request.method=="POST":
       Qrtxt=request.POST['qrtext']
-      QrCode.objects.create(url=Qrtxt)
+      QrCode.objects.create(qrtxt=Qrtxt)
 
    qr_code=QrCode.objects.all()
    return render(request,"index.html",{'qr_code':qr_code})

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Generate a QR Code of URL</title>
+   </head>
+   <body>
+      <form method="POST">
+         {% csrf_token %}
+         <input type="text" placeholder="Enter text or number to generate" required name="qrtext">
+         <button type= "submit" >Generate QR Code</button>
+      </form>
+      {% for qr in qr_code %}
+      <img src="{{qr.image.url}}"/><br>
+      {%endfor%}
+   </body>
+</html>
